@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# mysql容器构建脚本
+
 IMAGE_NAME=mysql
 CONTAINER_NAME=mall-mysql
-MYSQL_VERSION=5.7
+MYSQL_VERSION=8.0
 ROOT_PASSWORD=mwh123456
 
 # 构建 Docker 镜像
