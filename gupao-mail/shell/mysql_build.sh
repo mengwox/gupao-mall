@@ -4,7 +4,7 @@
 
 IMAGE_NAME=mysql
 CONTAINER_NAME=mall-mysql
-MYSQL_VERSION=8.0
+MYSQL_VERSION=8.0.32
 ROOT_PASSWORD=mwh123456
 
 # 构建 Docker 镜像
@@ -19,6 +19,7 @@ fi
 # 运行 Docker 容器
 docker run -d \
   --name $CONTAINER_NAME \
+  --restart always \
   -p 3306:3306 \
   -v /path/to/data:/var/lib/mysql \
   -v /var/lib/docker/volumes/mysql-volume/config:/etc/mysql/conf.d \
