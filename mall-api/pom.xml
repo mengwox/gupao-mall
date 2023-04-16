@@ -10,11 +10,30 @@
     </parent>
 
     <artifactId>mall-api</artifactId>
+    <version>${parent.version}</version>
+    <packaging>pom</packaging>
+    <description>
+        所有数据库表对应的Bean和Feign接口
+    </description>
+
+    <modules>
+        <module>mall-goods-api</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <!--MyBatis Plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus-boot-starter.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>mall-service</artifactId>
+    <version>${parent.version}</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -17,4 +18,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <!--jar包依赖-->
+        <dependency>
+            <groupId>org.mawenhao</groupId>
+            <artifactId>mall-service-dependency</artifactId>
+        </dependency>
+        <!--工具包依赖-->
+        <dependency>
+            <groupId>org.mawenhao</groupId>
+            <artifactId>mall-common</artifactId>
+        </dependency>
+    </dependencies>
 </project>
