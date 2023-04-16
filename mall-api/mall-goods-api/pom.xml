@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>mall-goods-api</artifactId>
-    <version>${parent.version}</version>
+    <version>${gupao-mall.version}</version>
     <description>
         shop_goods对应的Api工程
     </description>

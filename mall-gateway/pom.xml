@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>mall-gateway</artifactId>
-    <version>${parent.version}</version>
+    <version>${gupao-mall.version}</version>
     <description>
         管理所有微服务网关
     </description>

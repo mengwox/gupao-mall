@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>mall-web</artifactId>
-    <version>${parent.version}</version>
+    <version>${gupao-mall.version}</version>
     <packaging>war</packaging>
     <description>
         管理涉及到页面渲染的工程

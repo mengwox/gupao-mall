@@ -34,7 +34,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <mybatis-plus-boot-starter.version>3.3.2</mybatis-plus-boot-starter.version>
-        <project.version>1.0-SNAPSHOT</project.version>
+        <gupao-mall.version>1.0-SNAPSHOT</gupao-mall.version>
     </properties>
 
     <dependencyManagement>

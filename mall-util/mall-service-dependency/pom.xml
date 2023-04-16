@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>mall-service-dependency</artifactId>
+    <version>${gupao-mall.version}</version>
     <description>
         所有微服务工程公共依赖包、所有微服务工程公共配置类
     </description>

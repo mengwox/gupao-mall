@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>mall-api</artifactId>
-    <version>${parent.version}</version>
+    <version>${gupao-mall.version}</version>
     <packaging>pom</packaging>
     <description>
         所有数据库表对应的Bean和Feign接口

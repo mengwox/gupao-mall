@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>mall-util</artifactId>
-    <version>${parent.version}</version>
+    <version>${gupao-mall.version}</version>
     <packaging>pom</packaging>
     <modules>
         <module>mall-common</module>
