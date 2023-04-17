@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+mybatis-plus:
+  mapper-locations: /org/mawenhao/goods/mapper/*Mapper.xml
+
+spring:
+  application:
+    name: goods
+
+  cloud:
+    # nacos配置
+    nacos:
+      server-addr: 192.168.56.150:8848
+      username: nacos
+      password: mawenhao#zl
+
+  # 数据库配置
+  datasource:
+    username: root
+    password: mwh123456
+    url: jdbc:mysql://192.168.56.150:3306/mawenhao?useSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10

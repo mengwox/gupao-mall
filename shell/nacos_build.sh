@@ -5,7 +5,7 @@
 IMAGE_VERSION=v2.2.1
 
 # 容器
-CONTAINER_NAME=mall-nacos
+CONTAINER_NAME=nacos
 
 # nacos
 NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789
@@ -33,6 +33,7 @@ docker run -d \
   --name $CONTAINER_NAME \
   --restart always \
   -v /path/to/nacos/conf:/home/nacos/nacos/conf \
+  -v /path/to/nacos/custom.properties:/home/nacos/init.d/custom.properties \
   -v /path/to/nacos/logs:/home/nacos/nacos/logs \
   -v /path/to/nacos/data:/home/nacos/nacos/data \
   -e MODE=standalone \
@@ -48,8 +49,6 @@ docker run -d \
   -e NACOS_AUTH_IDENTITY_KEY=$NACOS_AUTH_IDENTITY_KEY \
   -e NACOS_AUTH_IDENTITY_VALUE=$NACOS_AUTH_IDENTITY_VALUE \
   -p 8848:8848 \
-  -p 9848:9848 \
-  -p 9849:9849 \
   nacos/nacos-server:$IMAGE_VERSION
 
 # 检查 Nacos 服务器是否已成功运行

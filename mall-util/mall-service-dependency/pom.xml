@@ -10,14 +10,14 @@
     </parent>
 
     <artifactId>mall-service-dependency</artifactId>
-    <version>${gupao-mall.version}</version>
+    <version>1.0-SNAPSHOT</version>
     <description>
         所有微服务工程公共依赖包、所有微服务工程公共配置类
     </description>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -39,7 +39,6 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
 
         <!--Redis-->

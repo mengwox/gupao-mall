@@ -3,7 +3,7 @@
 # mysql容器构建脚本
 
 IMAGE_NAME=mysql
-CONTAINER_NAME=mall-mysql
+CONTAINER_NAME=mysql
 MYSQL_VERSION=8.0.32
 ROOT_PASSWORD=mwh123456
 

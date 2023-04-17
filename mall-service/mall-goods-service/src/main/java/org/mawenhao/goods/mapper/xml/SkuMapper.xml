@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mawenhao.goods.mapper.SkuMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, price, num, image, images, create_time, update_time, spu_id, category_id, category_name, brand_id, brand_name, sku_attribute, status
+    </sql>
+
+</mapper>
