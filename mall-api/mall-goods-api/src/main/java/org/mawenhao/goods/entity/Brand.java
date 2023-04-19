@@ -6,9 +6,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -22,12 +22,10 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
+@Builder
 @TableName("brand")
 @ApiModel(value = "Brand对象", description = "品牌表")
 public class Brand implements Serializable {
-
-
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "品牌id")
@@ -49,6 +47,4 @@ public class Brand implements Serializable {
     @ApiModelProperty(value = "排序")
     @TableField("sort")
     private Integer sort;
-
-
 }

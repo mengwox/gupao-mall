@@ -27,6 +27,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+
         <!--MyBatis Plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
