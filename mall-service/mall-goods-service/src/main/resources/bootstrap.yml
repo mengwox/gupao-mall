@@ -25,3 +25,12 @@ spring:
     hikari:
       minimum-idle: 2
       maximum-pool-size: 10
+
+xxl:
+  job:
+    admin-addresses: http://192.168.56.150:8081/xxl-job-admin
+    access-token: KWoFi1t8goSh5k(F
+    executor:
+      appname: goods-executor
+      logpath: D:\github\desktop\gupao-mall\xxl-job-logs
+      logretentiondays: 30

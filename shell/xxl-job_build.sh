@@ -23,8 +23,10 @@ fi
 # 运行Docker container
 docker run -d \
   --name $CONTAINER_NAME \
+  --restart always \
   -v /path/to/xxl-job/logs:/data/applogs \
   -p $CONTAINER_OUTSIDE_PORT:$CONTAINER_PORT \
+  -p 9999:9999 \
   -e PARAMS="--spring.datasource.url=jdbc:mysql://$MYSQL_HOST:$MYSQL_PORT/$MYSQL_DATABASE \
   --xxl.job.accessToken=$ACCESS_TOKEN \
   --spring.datasource.username=$MYSQL_USERNAME --spring.datasource.password=$MYSQL_PASSWORD" \
