@@ -3,7 +3,8 @@ package org.mawenhao.goods.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.mawenhao.goods.dto.BrandDto;
 import org.mawenhao.goods.entity.Brand;
-import org.mawenhao.goods.vo.BrandVo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,11 +15,13 @@ import org.mawenhao.goods.vo.BrandVo;
  * @since 2023-04-17
  */
 public interface BrandService extends IService<Brand> {
-    void add(BrandDto dto);
+    Integer add(BrandDto dto);
 
     void modify(BrandDto dto);
 
     void delete(Integer id);
 
-    BrandVo get(Integer id);
+    Brand get(Integer id);
+
+    List<Brand> queryList(Brand brand);
 }

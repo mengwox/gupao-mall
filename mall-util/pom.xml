@@ -23,7 +23,6 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mybatis-plus-generator.version>3.4.0</mybatis-plus-generator.version>
-        <xxl-job-core.version>2.3.1</xxl-job-core.version>
     </properties>
 
     <dependencies>
@@ -31,7 +30,7 @@
         <dependency>
             <groupId>com.xuxueli</groupId>
             <artifactId>xxl-job-core</artifactId>
-            <version>${xxl-job-core.version}</version>
+            <version>${xxl-job.version}</version>
         </dependency>
 
         <dependency>
@@ -43,14 +42,14 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-to-slf4j</artifactId>
-            <version>2.12.1</version>
+            <version>${log4j-to-slf4j.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.28</version>
+            <version>${mysql-connector.version}</version>
         </dependency>
     </dependencies>
 

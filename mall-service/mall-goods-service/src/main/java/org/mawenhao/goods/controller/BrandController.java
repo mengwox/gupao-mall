@@ -4,9 +4,9 @@ package org.mawenhao.goods.controller;
 import lombok.AllArgsConstructor;
 import org.mawenhao.common.Resp;
 import org.mawenhao.goods.dto.BrandDto;
+import org.mawenhao.goods.entity.Brand;
 import org.mawenhao.goods.groups.BrandGroup;
 import org.mawenhao.goods.service.BrandService;
-import org.mawenhao.goods.vo.BrandVo;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,15 +27,14 @@ public class BrandController {
 
     //品牌查询
     @GetMapping("/{id}")
-    public Resp<BrandVo> get(@PathVariable Integer id) {
+    public Resp<Brand> get(@PathVariable Integer id) {
         return Resp.data(brandService.get(id));
     }
 
     //品牌新增,分组校验之BrandGroup.Add
     @PostMapping
-    public Resp<String> add(@Validated(BrandGroup.Add.class) @RequestBody BrandDto dto) {
-        brandService.add(dto);
-        return Resp.data("新增成功");
+    public Resp<Integer> add(@Validated(BrandGroup.Add.class) @RequestBody BrandDto dto) {
+        return Resp.data(brandService.add(dto));
     }
 
     //品牌修改,分组校验之BrandGroup.Update

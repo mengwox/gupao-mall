@@ -33,6 +33,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <mybatis-plus-boot-starter.version>3.3.2</mybatis-plus-boot-starter.version>
+        <junit.version>4.13.2</junit.version>
+        <mall.version>1.0-SNAPSHOT</mall.version>
+        <aspectjrt.version>1.9.7</aspectjrt.version>
+        <hutool.version>5.8.11</hutool.version>
+        <swagger.version>1.5.21</swagger.version>
+        <xxl-job.version>2.4.0</xxl-job.version>
+        <velocity-engine-core.version>2.3</velocity-engine-core.version>
+        <log4j-to-slf4j.version>2.12.1</log4j-to-slf4j.version>
+        <mysql-connector.version>8.0.28</mysql-connector.version>
     </properties>
 
     <dependencyManagement>

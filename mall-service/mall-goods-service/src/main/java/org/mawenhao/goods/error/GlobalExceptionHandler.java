@@ -1,6 +1,8 @@
 package org.mawenhao.goods.error;
 
+import lombok.extern.slf4j.Slf4j;
 import org.mawenhao.common.Resp;
+import org.slf4j.MDC;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.core.annotation.Order;
@@ -20,11 +22,38 @@ import javax.servlet.Servlet;
  *
  * @author mawenhao 2023/4/19
  */
-@Order()
+@Order
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnClass({Servlet.class, DispatcherServlet.class})
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
+    /**
+     * 空指针异常
+     *
+     * @param e NullPointerException
+     * @return 异常提示
+     */
+    @ExceptionHandler(value = {NullPointerException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Resp<String> handleException(NullPointerException e) {
+        log.error("空指针异常", e);
+        return Resp.fail(e.getMessage());
+    }
+
+    /**
+     * 非法参数异常
+     *
+     * @param e IllegalArgumentException
+     * @return 异常提示
+     */
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Resp<String> handleException(IllegalArgumentException e) {
+        log.error("非法参数异常", e);
+        return Resp.fail(e.getMessage());
+    }
+
     /**
      * 请求参数不合法
      *
@@ -34,6 +63,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Resp<String> handleException(MethodArgumentNotValidException e) {
+        log.error("请求参数不合法", e);
         return handleError(e.getBindingResult());
     }
 
@@ -46,6 +76,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {Exception.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Resp<String> handleException(Exception e) {
+        log.error("服务器异常", e);
         return Resp.fail("服务器异常：" + e.getMessage());
     }
 

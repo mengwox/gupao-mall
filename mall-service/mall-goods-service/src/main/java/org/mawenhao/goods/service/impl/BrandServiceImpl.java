@@ -1,14 +1,18 @@
 package org.mawenhao.goods.service.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.val;
 import org.mawenhao.goods.dto.BrandDto;
 import org.mawenhao.goods.entity.Brand;
 import org.mawenhao.goods.mapper.BrandMapper;
 import org.mawenhao.goods.service.BrandService;
-import org.mawenhao.goods.vo.BrandVo;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+
+import java.util.List;
 
 /**
  * <p>
@@ -24,16 +28,13 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
      * bean copy, dto to entity
      */
     private static final BeanCopier DTO_2_ENTITY = BeanCopier.create(BrandDto.class, Brand.class, false);
-    /**
-     * bean copy, entity to vo
-     */
-    private static final BeanCopier ENTITY_2_VO = BeanCopier.create(Brand.class, BrandVo.class, false);
 
     @Override
-    public void add(BrandDto dto) {
+    public Integer add(BrandDto dto) {
         Brand addEntity = Brand.builder().build();
         DTO_2_ENTITY.copy(dto, addEntity, null);
         Assert.isTrue(save(addEntity), "新增失败");
+        return addEntity.getId();
     }
 
     @Override
@@ -49,13 +50,19 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
     }
 
     @Override
-    public BrandVo get(Integer id) {
-        Brand brand = getById(id);
-        if (brand == null) {
-            return null;
-        }
-        BrandVo result = new BrandVo();
-        ENTITY_2_VO.copy(brand, result, null);
-        return result;
+    public Brand get(Integer id) {
+        return getById(id);
+    }
+
+    @Override
+    public List<Brand> queryList(Brand brand) {
+        val wrapper = new LambdaQueryChainWrapper<>(baseMapper);
+        return wrapper
+                .eq(brand.getId() != null, Brand::getId, brand.getId())
+                .eq(StrUtil.isNotBlank(brand.getName()), Brand::getName, brand.getName())
+                .eq(StrUtil.isNotBlank(brand.getInitial()), Brand::getInitial, brand.getInitial())
+                .eq(StrUtil.isNotBlank(brand.getImage()), Brand::getImage, brand.getImage())
+                .eq(brand.getSort() != null, Brand::getSort, brand.getSort())
+                .list();
     }
 }
