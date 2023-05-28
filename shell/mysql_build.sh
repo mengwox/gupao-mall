@@ -24,6 +24,6 @@ docker run -d \
   -v /path/to/data:/var/lib/mysql \
   -v /var/lib/docker/volumes/mysql-volume/config:/etc/mysql/conf.d \
   -e MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
-  -e MYSQL_USER=mawenhao \
+  -e MYSQL_USER=root \
   -e MYSQL_PASSWORD=$ROOT_PASSWORD \
   $IMAGE_NAME:$MYSQL_VERSION

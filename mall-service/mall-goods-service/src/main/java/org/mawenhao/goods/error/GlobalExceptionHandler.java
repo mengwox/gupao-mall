@@ -2,7 +2,6 @@ package org.mawenhao.goods.error;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mawenhao.common.Resp;
-import org.slf4j.MDC;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.core.annotation.Order;
@@ -18,7 +17,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.Servlet;
 
 /**
- * 全局异常处理器
+ * (兜底)异常处理器
  *
  * @author mawenhao 2023/4/19
  */

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("scan.your.mapper.package")
+@MapperScan("org.mawenhao.goods.mapper")
 public class MybatisPlusConfiguration {
 
     /**
@@ -22,13 +22,23 @@ public class MybatisPlusConfiguration {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.H2));
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         return interceptor;
     }
 
-    @Bean
+    /**
+     * mybatis-plus自定义配置
+     *
+     * @param mybatisPlusInterceptor mybatis-plus 拦截器
+     * @return 自定义配置
+     */
+    //@Bean
     public ConfigurationCustomizer configurationCustomizer(MybatisPlusInterceptor mybatisPlusInterceptor) {
         return configuration -> {
+            //这里应该用来添加额外的mybatis-plus插件
+            //如果添加一个已经注册的MybatisPlusInterceptor,那么这个拦截器将会生效2次
+            //也就导致了如下问题:
+            //SQL: SELECT  id,name,image,initial,sort  FROM brand LIMIT ? LIMIT ?
             configuration.addInterceptor(mybatisPlusInterceptor);
         };
     }

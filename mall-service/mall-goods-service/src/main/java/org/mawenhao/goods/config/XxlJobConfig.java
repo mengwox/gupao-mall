@@ -4,9 +4,8 @@ import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 @EnableConfigurationProperties(XxlJobProperties.class)
 @AllArgsConstructor
 public class XxlJobConfig {
@@ -18,10 +17,10 @@ public class XxlJobConfig {
         xxlJobSpringExecutor.setAdminAddresses(xxlJobProperties.getAdminAddresses());
         xxlJobSpringExecutor.setAccessToken(xxlJobProperties.getAccessToken());
 
-        XxlJobProperties.XxlJobExecutorProperties executor = xxlJobProperties.getExecutor();
-        xxlJobSpringExecutor.setAppname(executor.getAppname());
-        xxlJobSpringExecutor.setLogPath(executor.getLogpath());
-        xxlJobSpringExecutor.setLogRetentionDays(executor.getLogretentiondays());
+        XxlJobProperties.XxlJobExecutorProperties executor = xxlJobProperties.getExecutorProperties();
+        xxlJobSpringExecutor.setAppname(executor.getAppName());
+        xxlJobSpringExecutor.setLogPath(executor.getLogPath());
+        xxlJobSpringExecutor.setLogRetentionDays(executor.getLogRetentionDays());
         return xxlJobSpringExecutor;
     }
 }
