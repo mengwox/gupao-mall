@@ -8,23 +8,7 @@ package org.mawenhao.config;
 public interface MyConfig {
     interface Tables {
         String[] TABLES = {
-                "ad_items",
-                "address",
-                "areas",
-                "brand",
-                "category",
-                "category_attr",
-                "category_brand",
-                "cities",
-                "order",
-                "order_sku",
-                "provinces",
-                "seckill_goods",
-                "seckill_order",
-                "sku",
-                "sku_attribute",
-                "spu",
-                "user_info"
+                "big_room"
         };
     }
 
@@ -40,7 +24,7 @@ public interface MyConfig {
      * 数据库
      */
     interface DataSource {
-        String URL = "jdbc:mysql://192.168.56.150:3306/mawenhao?useUnicode=true&useSSL=false&characterEncoding=utf8";
+        String URL = "jdbc:mysql://192.168.56.150:8066/mengwox?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Shanghai";
         String USERNAME = "root";
         String PASSWORD = "mwh123456";
     }

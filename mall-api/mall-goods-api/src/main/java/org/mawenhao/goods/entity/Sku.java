@@ -26,8 +26,6 @@ import java.time.LocalDateTime;
 @TableName("sku")
 @ApiModel(value = "Sku对象", description = "商品表")
 public class Sku implements Serializable {
-
-
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "商品id")
