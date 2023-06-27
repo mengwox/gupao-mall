@@ -115,8 +115,8 @@
     <!--	<user name="root" defaultAccount="true">-->
     <user name="root" defaultAccount="true">
         <property name="password">mwh123456</property>
-        <property name="schemas">mycat_default</property>
-        <property name="defaultSchema">mycat_default</property>
+        <property name="schemas">mycat-all</property>
+        <property name="defaultSchema">mycat-all</property>
         <!--No MyCAT Database selected 错误前会尝试使用该schema作为schema，不设置则为null,报错 -->
 
         <!-- 表级 DML 权限设置 -->
@@ -132,9 +132,9 @@
 
     <user name="mycat_readonly">
         <property name="password">mwh123456</property>
-        <property name="schemas">mycat_default</property>
+        <property name="schemas">mycat-all</property>
         <property name="readOnly">true</property>
-        <property name="defaultSchema">mycat_default</property>
+        <property name="defaultSchema">mycat-all</property>
     </user>
 
 </mycat:server>

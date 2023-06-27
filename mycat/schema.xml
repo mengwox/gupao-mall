@@ -3,18 +3,21 @@
 <mycat:schema>
 
     <!--逻辑库-->
-    <schema name="mycat_default" checkSQLschema="true" sqlMaxLimit="100" randomDataNode="dn1">
-        <!--<table name="big_room" primaryKey="id" dataNode="dn1,dn2,dn3" rule="sharding-by-channel"
-               autoIncrement="true" fetchStoreNodeByJdbc="true">-->
-        <table name="big_room_all" primaryKey="id" dataNode="dn1" rule="partition-city-id"
-               splitTableNames="true" subTables="big_room,440300_big_room,110300_big_room">
+    <schema name="mycat-all" checkSQLschema="false" sqlMaxLimit="100">
+        <table name="big_room" primaryKey="id" dataNode="dn1,dn2"
+               rule="partition-channel" >
+        </table>
+        <table name="big_room_detail" primaryKey="id" dataNode="dn1,dn2"
+               rule="partition-channel" >
+        </table>
+        <table name="big_room_desc" primaryKey="id" dataNode="dn1,dn2"
+               rule="partition-channel" >
         </table>
     </schema>
 
     <!--分片结点-->
-    <dataNode name="dn1" dataHost="localhost1" database="mengwox"/>
-    <!--<dataNode name="dn2" dataHost="localhost2" database="mengwox"/>
-    <dataNode name="dn3" dataHost="localhost3" database="mengwox"/>-->
+    <dataNode name="dn1" dataHost="localhost1" database="clss"/>
+    <dataNode name="dn2" dataHost="localhost1" database="mengwox"/>
 
     <!--物理库-->
     <dataHost name="localhost1" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native"
@@ -25,22 +28,4 @@
                    user="root" password="mwh123456">
         </writeHost>
     </dataHost>
-
-    <!--url="jdbc:mysql://192.168.56.150:3307?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=false&amp;useServerPrepStmts=true"-->
-    <!--<dataHost name="localhost2" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native"
-              switchType="1" slaveThreshold="100">
-        <heartbeat>select user()</heartbeat>
-        <writeHost host="hostM2"
-                   url="192.168.56.150:3307"
-                   user="root" password="mwh123456">
-        </writeHost>
-    </dataHost>
-
-    <dataHost name="localhost3" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native"
-              switchType="1" slaveThreshold="100">
-        <heartbeat>select user()</heartbeat>
-        <writeHost host="hostM3" url="192.168.56.150:3308" user="root" password="mwh123456">
-        </writeHost>
-    </dataHost>-->
-
 </mycat:schema>

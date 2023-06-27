@@ -29,6 +29,10 @@ public class BigRoom implements Serializable {
     @TableId(type = IdType.AUTO)
     private Integer id;
     /**
+     * 城市编码
+     */
+    private String cityId;
+    /**
      * 来源渠道
      */
     private String channel;

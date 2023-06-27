@@ -1,12 +1,19 @@
 package org.mawenhao.goods.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.handler.TableNameHandler;
+import com.baomidou.mybatisplus.extension.plugins.inner.DynamicTableNameInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import org.mawenhao.goods.CityCodeHandler;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 @Configuration
 @MapperScan("org.mawenhao.goods.mapper")
@@ -22,24 +29,26 @@ public class MybatisPlusConfiguration {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        interceptor.addInnerInterceptor(paginationInterceptor());
+        interceptor.addInnerInterceptor(dynamicTableNameInterceptor());
         return interceptor;
     }
 
-    /**
-     * mybatis-plus自定义配置
-     *
-     * @param mybatisPlusInterceptor mybatis-plus 拦截器
-     * @return 自定义配置
-     */
-    //@Bean
-    public ConfigurationCustomizer configurationCustomizer(MybatisPlusInterceptor mybatisPlusInterceptor) {
-        return configuration -> {
-            //这里应该用来添加额外的mybatis-plus插件
-            //如果添加一个已经注册的MybatisPlusInterceptor,那么这个拦截器将会生效2次
-            //也就导致了如下问题:
-            //SQL: SELECT  id,name,image,initial,sort  FROM brand LIMIT ? LIMIT ?
-            configuration.addInterceptor(mybatisPlusInterceptor);
-        };
+    private InnerInterceptor paginationInterceptor() {
+        return new PaginationInnerInterceptor(DbType.MYSQL);
+    }
+
+    private InnerInterceptor dynamicTableNameInterceptor() {
+        DynamicTableNameInnerInterceptor interceptor = new DynamicTableNameInnerInterceptor();
+        CityCodeHandler handler = new CityCodeHandler();
+        Set<String> dynamicTables = handler.dynamicTables();
+
+        Map<String, TableNameHandler> map = new HashMap<>(dynamicTables.size());
+        for (String table : dynamicTables) {
+            map.put(table, handler);
+        }
+        interceptor.setTableNameHandlerMap(map);
+
+        return interceptor;
     }
 }

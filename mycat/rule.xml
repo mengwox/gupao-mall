@@ -10,7 +10,7 @@
 <!DOCTYPE mycat:rule SYSTEM "rule.dtd">
 <mycat:rule>
     <!--partition-city-id-->
-    <tableRule name="partition-city-id">
+    <tableRule name="partition-city">
         <rule>
             <columns>city_id</columns>
             <algorithm>cityIdFunc</algorithm>
@@ -18,7 +18,7 @@
     </tableRule>
 
     <!--自定义rule-->
-    <tableRule name="sharding-by-channel">
+    <tableRule name="partition-channel">
         <rule>
             <columns>channel</columns>
             <algorithm>channelFunc</algorithm>
@@ -109,9 +109,9 @@
     </function>
 
     <function name="channelFunc"
-              class="io.mycat.route.function.PartitionByString">
-        <property name="partitionCount">2</property>
-        <property name="partitionLength">512</property>
+              class="io.mycat.route.function.PartitionByFileMap">
+        <property name="mapFile">partition-channel.txt</property>
+        <property name="type">0</property>
     </function>
 
     <function name="murmur"

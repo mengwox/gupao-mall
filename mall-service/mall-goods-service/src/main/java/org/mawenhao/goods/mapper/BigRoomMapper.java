@@ -1,6 +1,7 @@
 package org.mawenhao.goods.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.mawenhao.goods.entity.BigRoom;
 
 /**
