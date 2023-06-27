@@ -30,7 +30,7 @@ public class MybatisPlusConfiguration {
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         interceptor.addInnerInterceptor(paginationInterceptor());
-        interceptor.addInnerInterceptor(dynamicTableNameInterceptor());
+//        interceptor.addInnerInterceptor(dynamicTableNameInterceptor());
         return interceptor;
     }
 
